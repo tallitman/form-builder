@@ -1,0 +1,51 @@
+{
+  "name": "form-builder-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Marik Sh",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=8.0.0 <11.0.0"
+  },
+  "scripts": {
+    "watch": "nodemon --exec \"npm run build && npm run start:dev\" --watch src --ext ts",
+    "start": "npm run start:prod",
+    "start:dev": "NODE_ENV=development node build/index.js",
+    "start:prod": "NODE_ENV=production node build/index.js",
+    "build": "rm -rf build && tsc -p tsconfig.json",
+    "lint": "tslint -p ./"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.1.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.0.1",
+    "express": "^4.17.1",
+    "module-alias": "^2.2.0",
+    "mongoose": "^5.6.3",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cors": "^2.8.5",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.0",
+    "@types/hapi__joi": "^15.0.2",
+    "@types/mongoose": "^5.5.7",
+    "@types/morgan": "^1.7.35",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "tslint-eslint-rules": "^5.4.0"
+  },
+  "_moduleAliases": {
+    "@config": "build/config",
+    "@models": "build/models",
+    "@controllers": "build/controllers",
+    "@routes": "build/routes",
+    "@logger": "build/logger"
+  }
+}

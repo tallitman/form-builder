@@ -1,0 +1,21 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "indent": [true, "tabs"],
+        "quotemark": true,
+        "object-literal-sort-keys": false,
+        "no-console": false,
+		"space-within-parens": [true, 0],
+		"dot-location": ["error", "property"]
+    },
+    "rulesDirectory": [
+		"node_modules/tslint-eslint-rules/dist/rules"
+	],
+    "linterOptions": {
+        "exclude": ["node_modules"]
+    }
+}

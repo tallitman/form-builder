@@ -1,0 +1,28 @@
+version: '3'
+services:
+    mongo:
+        container_name: mongo
+        image: mongo
+        ports:
+            - '27017:27017'
+    
+    api:
+        container_name: form-builder-api
+        restart: always
+        build: ./form-builder-api
+        links:
+            - mongo
+        ports:
+            - '4000:4000'
+        depends_on:
+            - mongo
+    client:
+        container_name: form-builder-client
+        restart: always
+        build: ./form-builder-client
+        # links:
+        #     - api
+        ports:
+            - '3000:3000'
+        depends_on:
+            - api
