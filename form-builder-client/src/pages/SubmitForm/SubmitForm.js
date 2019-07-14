@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -13,6 +14,7 @@ import { VALIDATION_SCHEMA } from '../../helpers/validators';
 import { Input, Label, FormGroup, FormFeedback } from 'reactstrap';
 import { toast } from 'react-toastify';
 import { ApiLoader } from '../../components/LoadingComponent/LoadingComponent';
+import EmptyState from '../../components/EmptyState/EmptyState';
 
 export default class SubmitForm extends Component {
 	constructor(props) {
@@ -129,6 +131,7 @@ export default class SubmitForm extends Component {
 				<ApiLoader error={this.state.apiError}/>
 			);
 		}
+		
 		return (
 			<Paper>
 				<h1>Submitting form {form.name} ({form._id})</h1>

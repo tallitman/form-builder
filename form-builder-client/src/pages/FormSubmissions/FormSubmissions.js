@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 import { BASE_API_URL } from '../../config/config';
 import { Paper } from '../../style/Paper/Paper';
 import { Table, THead, Tr, Td } from '../../style/Table';
 import { Row , Col} from '../../style/Grid';
 import { ApiLoader } from '../../components/LoadingComponent/LoadingComponent';
+import EmptyState from '../../components/EmptyState/EmptyState';
+import { Button } from '../../style/Button/Button';
 export default class FormSubmissions extends Component {
 	constructor(props) {
 		super(props);
@@ -63,6 +66,15 @@ export default class FormSubmissions extends Component {
 				<ApiLoader error={this.state.apiError} />
 			);
 		}
+
+		if (!this.state.isLoading && !form.submissions.length) {
+			return (
+				<EmptyState>
+					<Button as={Link} to={`/${form._id}/submit`}>Submit This Form!</Button>	
+				</EmptyState>
+			);
+		}
+
 		return (
 			<div>
 				<Paper scrollable>
