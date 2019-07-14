@@ -7,21 +7,30 @@ services:
             - '27017:27017'
     
     api:
+        image: node:alpine
         container_name: form-builder-api
         restart: always
-        build: ./form-builder-api
+        # build: ./form-builder-api
+        volumes:
+            - ./form-builder-api:/usr/src/api
+        working_dir: /usr/src/api
         links:
             - mongo
+        environment:
+            MONGODB_URI: mongodb://mongo:27017/wix
         ports:
             - '4000:4000'
         depends_on:
             - mongo
+        command:
+            npm run watch
+
     client:
-        container_name: form-builder-client
-        restart: always
         build: ./form-builder-client
-        # links:
-        #     - api
+        container_name: form-builder-client
+        volumes:
+            - './form-builder-client:/usr/src/client'
+            - '/usr/src/client/node_modules'
         ports:
             - '3000:3000'
         depends_on:

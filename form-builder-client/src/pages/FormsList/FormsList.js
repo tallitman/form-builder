@@ -8,6 +8,7 @@ import { Paper } from '../../style/Paper/Paper';
 import { Table, Tr, THead, Td } from '../../style/Table';
 import { Button } from '../../style/Button/Button';
 import { ApiLoader } from '../../components/LoadingComponent/LoadingComponent';
+import EmptyState from '../../components/EmptyState/EmptyState';
 
 export default class FormsList extends Component {
 	constructor(props) {
@@ -66,6 +67,14 @@ export default class FormsList extends Component {
 			);
 		}
 		const { forms } = this.state;
+
+		if (!this.state.isLoading && !forms.length) {
+			return (
+				<EmptyState>
+					<Button as={Link} to="/build">Create a form!</Button>	
+				</EmptyState>
+			);
+		}
 		return (
 			<Paper>
 				<Table>

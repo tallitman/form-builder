@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 
 import { toast } from 'react-toastify';
 
-import { Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
+import { Input } from 'reactstrap';
 
 import { Paper } from '../../style/Paper/Paper';
 import { Button, DangerButton } from '../../style/Button/Button';

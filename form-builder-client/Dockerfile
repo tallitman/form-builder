@@ -1,7 +1,11 @@
-FROM node:latest
-WORKDIR /user/app/client
-COPY . .
-RUN yarn install
+FROM node:alpine
+
+WORKDIR /usr/src/client
+
+COPY package.json /usr/src/client
+
+RUN npm install --silent
+
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]

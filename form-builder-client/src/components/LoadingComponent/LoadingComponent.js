@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Paper } from '../../style/Paper/Paper';
 import { Row, Col } from '../../style/Grid';
 import { ReactComponent as LoadingImage } from '../../assets/images/loading.svg';
