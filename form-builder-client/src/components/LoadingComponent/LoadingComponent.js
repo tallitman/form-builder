@@ -7,6 +7,20 @@ import { ReactComponent as NotFoundError } from '../../assets/images/404.svg';
 
 export const ApiLoader = props => {
 	if (props.error) {
+		if (!props.error.response) {
+			return (
+				<Paper>
+					<Row>
+						<Col style={{alignItems: 'center', maxHeight: 'calc(90vh - 100px)'}}>
+							<h1>We Have Encountered A Problem...</h1>
+							{/* <img src={LoadingImage} style={{maxHeight: '70%'}}/> */}
+							<ErrorImage />
+							<p style={{margin: 'auto'}}>Might Just Send The Elves To Do That</p>
+						</Col>
+					</Row>
+				</Paper>
+			);
+		}
 		switch (props.error.response.status) {
 		case 404:
 			return (
