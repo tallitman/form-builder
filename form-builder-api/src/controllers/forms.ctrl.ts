@@ -8,9 +8,6 @@ import formsModel from "@models/forms.model";
 
 export async function getFormsList(req: Request, res: Response) {
 	try {
-		// const forms = await formsModel
-		// 	.find()
-		// 	.exec();
 
 		const forms = await formsModel
 			.aggregate([{
